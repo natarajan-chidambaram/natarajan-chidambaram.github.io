@@ -32,6 +32,13 @@
   <!-- Theme CSS - Includes Bootstrap -->
   <link href="css/creative.css" rel="stylesheet">
 
+  <style>
+  #past {display: none;}
+  .my_button {
+    margin:auto;
+    display:block;
+  }
+  </style>
 </head>
 
 <body id="page-top">
@@ -246,21 +253,27 @@
                 <a href="https://www.multitel.be/">Multitel</a> innovation center. Topic: Identifying ControlNet models that can work with Stable Diffusion for data augmentation process.</li>
               <li><strong>Aug 2023</strong>: Our paper <strong>Computational Evaluation of the Combination of Semi-Supervised and Active Learning for Histopathology Image Segmentation with Missing 
                 Annotations</strong> was accepted for poster presentation at CVAMD 2023.</li>
-              <li><strong>May 2023</strong>: Our paper <strong>Distinguishing Bot From Human Developers Based on Their GitHub Activity Types</strong> was accepted at SATToSE 2023.</li>
-              <li><strong>May 2023</strong>: Gave an invited presentation at BotSE 2023 for the published paper: <strong>Recognizing bot activity in collaborative software development</strong>. I highlighted the importance 
-                of detecting bots in GitHub, the performance and limitations of existing state-of-the-art techniques. Further, I provided one of the possible solutions to address these limitations and improve bot detection in GitHub.
-              <li><strong>Mar 2023</strong>: Our dataset paper <strong>A Dataset of Bot and Human Activities in GitHub</strong> was accepted at MSR 2023 Data and Tools Showcase Track.</li>
-              <li><strong>Sept 2022</strong>: Attended TRAIL Summer workshop 2022 at Berlin, Germany. I worked on one of the grand challenges that were proposed along with 
-                <a href="https://www.multitel.be/">Multitel</a> innovation center. Topic: Identifying the best Active Learning strategy for annotating histopathology images.</li>
-              <li><strong>Jun 2022</strong>: Won the MSR 2022 <strong>best Hackathon Paper Award</strong>!</li>
-              <li><strong>Jun 2022</strong>: Presented at the ICSR Doctoral Symposium Track, 2022 on the planned work for my PhD.</li>
-              <li><strong>May 2022</strong>: Our paper <strong>Recognizing Bot Activity in Collaborative Software Development</strong> was accepted at IEEE Software Journal Special Issue, 2022.</li>
-              <li><strong>Apr 2022 - Sep 2022</strong>: <strong>Publicity Chair</strong> for the 21st Belgium-Netherlands Software Evolution Workshop (BENEVOL) 2022.</li>
-              <li><strong>Mar 2022</strong>: Our hackathon paper <strong>Bot Detection in GitHub Respositories</strong> was accepted at MSR Hackathon Track, 2022.</li>
-              <li><strong>Feb 2022</strong>: Our paper <strong>Leveraging Predictions From Multiple Repositories to Improve Bot Detection</strong> was accepted at the International Workshop on Bots in Software Engineering (BotSE) 2022.</li>
-              <li><strong>Feb 2022</strong>: Our paper <strong>On the Accuracy of Bot Detection Techniques</strong> was accepted at the International Workshop on Bots in Software Engineering (BotSE) 2022.</li>
-              <li><strong>Nov 2021</strong>: Presented on the topic <strong>A Curated Dataset of Bots in GitHub Repositories</strong> at BENEVOL 2021.</li>
-              <li><strong>Sept 2021</strong>: Attended TRAIL Summer Workshop 2021 at Paris, France. I worked on one of the grand challenges proposed by <a href="https://www.sirris.be/en/about-us">Sirris</a> research organization.</li>
+
+              <span id="more"></span>
+
+              <span id="past">
+                <li><strong>May 2023</strong>: Our paper <strong>Distinguishing Bot From Human Developers Based on Their GitHub Activity Types</strong> was accepted at SATToSE 2023.</li>
+                <li><strong>May 2023</strong>: Gave an invited presentation at BotSE 2023 for the published paper: <strong>Recognizing bot activity in collaborative software development</strong>. I highlighted the importance 
+                  of detecting bots in GitHub, the performance and limitations of existing state-of-the-art techniques. Further, I provided one of the possible solutions to address these limitations and improve bot detection in GitHub.
+                <li><strong>Mar 2023</strong>: Our dataset paper <strong>A Dataset of Bot and Human Activities in GitHub</strong> was accepted at MSR 2023 Data and Tools Showcase Track.</li>
+                <li><strong>Sept 2022</strong>: Attended TRAIL Summer workshop 2022 at Berlin, Germany. I worked on one of the grand challenges that were proposed along with 
+                  <a href="https://www.multitel.be/">Multitel</a> innovation center. Topic: Identifying the best Active Learning strategy for annotating histopathology images.</li>
+                <li><strong>Jun 2022</strong>: Won the MSR 2022 <strong>best Hackathon Paper Award</strong>!</li>
+                <li><strong>Jun 2022</strong>: Presented at the ICSR Doctoral Symposium Track, 2022 on the planned work for my PhD.</li>
+                <li><strong>May 2022</strong>: Our paper <strong>Recognizing Bot Activity in Collaborative Software Development</strong> was accepted at IEEE Software Journal Special Issue, 2022.</li>
+                <li><strong>Apr 2022 - Sep 2022</strong>: <strong>Publicity Chair</strong> for the 21st Belgium-Netherlands Software Evolution Workshop (BENEVOL) 2022.</li>
+                <li><strong>Mar 2022</strong>: Our hackathon paper <strong>Bot Detection in GitHub Respositories</strong> was accepted at MSR Hackathon Track, 2022.</li>
+                <li><strong>Feb 2022</strong>: Our paper <strong>Leveraging Predictions From Multiple Repositories to Improve Bot Detection</strong> was accepted at the International Workshop on Bots in Software Engineering (BotSE) 2022.</li>
+                <li><strong>Feb 2022</strong>: Our paper <strong>On the Accuracy of Bot Detection Techniques</strong> was accepted at the International Workshop on Bots in Software Engineering (BotSE) 2022.</li>
+                <li><strong>Nov 2021</strong>: Presented on the topic <strong>A Curated Dataset of Bots in GitHub Repositories</strong> at BENEVOL 2021.</li>
+                <li><strong>Sept 2021</strong>: Attended TRAIL Summer Workshop 2021 at Paris, France. I worked on one of the grand challenges proposed by <a href="https://www.sirris.be/en/about-us">Sirris</a> research organization.</li>
+              </span></p>
+              <button class="my_button" onclick="myFunction()" id="pastNews">More news</button>
             </ul>
           </div>
         </div>
@@ -364,6 +377,23 @@
   <!-- Custom scripts for this template -->
   <script src="js/creative.min.js"></script>
 
+  <script>
+    function myFunction() {
+      var more = document.getElementById("more");
+      var past = document.getElementById("past");
+      var pastNews = document.getElementById("pastNews");
+
+      if (more.style.display === "none") {
+        more.style.display = "inline";
+        pastNews.innerHTML = "More news"; 
+        past.style.display = "none";
+      } else {
+        more.style.display = "none";
+        pastNews.innerHTML = "Less news"; 
+        past.style.display = "inline";
+      }
+    }
+  </script>
 </body>
 
 </html>

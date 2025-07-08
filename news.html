@@ -55,20 +55,21 @@
     <h2>News</h2>
       <strong>Latest news:</strong>
       <ul>
+        <li><strong>June 2025</strong>: Joined Luxembourg Institute of Science and Technology's software research group as an R&T Scientist.</li>
         <li><strong>May 2025</strong>: Obtained my Doctorate in Science (PhD) from the <a href="https://web.umons.ac.be/en/">University of Mons (UMONS), Belgium</a>.</li>
         <li><strong>April 2025</strong>: Presented my paper titled <strong>Observing bots in the wild: A quantitative analysis of a large open source ecosystem</strong> at the International Workshop on Bots in Software Engineering (BotSE) 2025.</li>
         <li><strong>April 2025</strong>: Gave an invited talk on the topic <strong>A Bot Identification Model and Tool Based on GitHub Activity Sequences</strong> at the International Workshop on Bots in Software Engineering (BotSE) 2025.</li>
-        <li><strong>March 2025</strong>: Gave a journal first presentation titled <strong>A Bot Identification Model and Tool Based on GitHub Activity Sequences</strong> at the <a href="https://conf.researchr.org/home/saner-2025">International conference on Software Analysis, Evolution and Reengineering (SANER) 2025</a>.</li>
       </ul>
       <strong>Older news:</strong>
       <ul>
+        <li><strong>March 2025</strong>: Gave a journal first presentation titled <strong>A Bot Identification Model and Tool Based on GitHub Activity Sequences</strong> at the <a href="https://conf.researchr.org/home/saner-2025">International conference on Software Analysis, Evolution and Reengineering (SANER) 2025</a>.</li>
         <li><strong>December 2024</strong>: Our paper titled <strong>Observing bots in the wild: A quantitative analysis of a large open source ecosystem</strong> got accepted for publication at BotSE 2025.</li>
         <li><strong>November 2024</strong>: Our journal paper <strong>A Bot Identification Model and Tool Based on GitHub Activity Sequences</strong> got published in Elsevier Journal of Systems and Software (JSS).</li>
         <li><strong>September 2024</strong>: Social Media Chair at the International Workshop on Bots in Software Engineering (BotSE) 2025, in Conjunction with ICSE 2025</a>.</li>
       
       <span id="more"></span>
 
-      <span id="past">
+      <div id="more-news" style="display: none;">
         <li><strong>May 2024</strong>: Our paper <strong>CIA: Controllable Image Augmentation Framework based on Stable Diffusion</strong> got accepted as a full regular paper at the IEEE International Conference on Multimedia Information Processing and Retrieval (MIPR 2024)</li>
         <li><strong>Apr 2024</strong>: Attended and presented my recent work at the International conference on Mining Software Repositories (MSR) 2024.</li>
         <li><strong>Jan 2024</strong>: Our tool paper <strong>RABBIT: A tool for identifying bot accounts based on their recent GitHub event history</strong> has been accepted at MSR 2024 Data and Tools Showcase Track.</li>
@@ -92,38 +93,23 @@
         <li><strong>Feb 2022</strong>: Our paper <strong>On the Accuracy of Bot Detection Techniques</strong> was accepted at the International Workshop on Bots in Software Engineering (BotSE) 2022.</li>
         <li><strong>Nov 2021</strong>: Presented on the topic <strong>A Curated Dataset of Bots in GitHub Repositories</strong> at BENEVOL 2021.</li>
         <li><strong>Sept 2021</strong>: Attended TRAIL Summer Workshop 2021 at Paris, France. I worked on one of the grand challenges proposed by <a href="https://www.sirris.be/en/about-us">Sirris</a> research organization.</li>
-      </span>
-      
-      <button class="my_button" onclick="myFunction()" id="pastNews">More past news</button>
-      </ul>
-  </div>
-   <!-- Bootstrap core JavaScript -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      </div>
 
-  <!-- Plugin JavaScript -->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-  <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+      <button onclick="toggleNews()" id="newsToggleBtn">More past news</button>
 
-  <!-- Custom scripts for this template -->
-  <script src="js/creative.min.js"></script>
+      <script>
+      function toggleNews() {
+        var moreNews = document.getElementById("more-news");
+        var btn = document.getElementById("newsToggleBtn");
 
-  <script>
-    function myFunction() {
-      var more = document.getElementById("more");
-      var past = document.getElementById("past");
-      var pastNews = document.getElementById("pastNews");
-
-      if (more.style.display === "none") {
-        more.style.display = "inline";
-        pastNews.innerHTML = "More news"; 
-        past.style.display = "none";
-      } else {
-        more.style.display = "none";
-        pastNews.innerHTML = "Less news"; 
-        past.style.display = "inline";
+        if (moreNews.style.display === "none") {
+          moreNews.style.display = "block";
+          btn.innerHTML = "Less news";
+        } else {
+          moreNews.style.display = "none";
+          btn.innerHTML = "More past news";
+        }
       }
-    }
-  </script>
+      </script>
 </body>
 </html>

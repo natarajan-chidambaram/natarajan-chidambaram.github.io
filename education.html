@@ -19,13 +19,8 @@
       background: #fff;
     }
 
-    a {
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
+    a { text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
     nav {
       background: #333;
@@ -39,12 +34,92 @@
       text-decoration: none;
     }
 
-    nav a:hover {
-      text-decoration: underline;
+    nav a:hover { text-decoration: underline; }
+
+    ul { padding-left: 1.2rem; }
+
+    /* Education entry layout */
+    .edu-entry {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1.75rem;
+      border-bottom: 1px solid #eee;
     }
 
-    ul {
-      padding-left: 1.2rem;
+    .edu-entry:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .edu-logo {
+      flex-shrink: 0;
+      width: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 0;
+    }
+
+    .edu-logo img {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .edu-content { flex: 1; }
+    .edu-content p { margin: 0; line-height: 1.65; }
+
+    @media (max-width: 520px) {
+      .edu-entry {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .edu-logo { width: 70px; }
+    }
+
+    /* Lightbox */
+    .logo-trigger {
+      cursor: zoom-in;
+    }
+
+    #lightbox {
+      visibility: hidden;
+      opacity: 0;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+
+    #lightbox.active {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+
+    #lightbox-close {
+      position: fixed;
+      top: 1rem;
+      right: 1.25rem;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      line-height: 1;
     }
   </style>
 </head>
@@ -61,20 +136,93 @@
 
   <div class="container">
     <h2>Education</h2>
-    <p class="mb-4">
-      <b>Doctorate in Science</b> (PhD) | <b>AI for Software Engineering</b> <br>
-      University of Mons, Belgium | August 2021 - June 2025
-    </p>
 
-    <p class="mb-4">
-      <b>Masters</b> (M.Sc.) | <b>Data Science in Engineering</b> <br>
-      Eindhoven University of Technology, Netherlands | September 2018 - September 2020
-    </p>
+    <!-- PhD -->
+    <div class="edu-entry">
+      <div class="edu-logo logo-trigger">
+        <img
+          src="images/UMONS.png"
+          alt="University of Mons logo"
+          width="150"
+          loading="lazy"
+        />
+      </div>
+      <div class="edu-content">
+        <p>
+          <b>Doctorate in Computer Science</b> (PhD) | <b>AI for Software Engineering</b> <br>
+          University of Mons, Belgium | 2021 – 2025 <br>
+          Thesis: <a href="https://orbi.umons.ac.be/handle/20.500.12907/52394">Improving Bot Identification in Collaborative Software Development on GitHub</a> | <a href="papers/dissertation.pdf">PDF</a>
+        </p>
+      </div>
+    </div>
 
-    <p class="mb-4">
-      <b>Bachelors</b> (B.Tech) | <b>Electronics and Communication Engineering</b> <br>
-      Amrita School of Engineering, Coimbatore, India | August 2012 - May 2016
-    </p>
+    <!-- Masters -->
+    <div class="edu-entry">
+      <div class="edu-logo logo-trigger">
+        <img
+          src="images/Eindhoven_University_of_Technology_logo_new.svg.png"
+          alt="Eindhoven University of Technology logo new"
+          width="150"
+          loading="lazy"
+        />
+      </div>
+      <div class="edu-content">
+        <p>
+          <b>Masters</b> (M.Sc.) | <b>Data Science in Engineering</b> <br>
+          Eindhoven University of Technology, Netherlands | 2018 – 2020 <br>
+          Thesis: <a href="https://research.tue.nl/en/studentTheses/decision-support-system-for-crop-growth-using-reinforcement-learn/">Decision Support System for Crop Growth Using Reinforcement Learning</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bachelors -->
+    <div class="edu-entry">
+      <div class="edu-logo logo-trigger">
+        <img
+          src="images/amrita-red-logo-new.svg"
+          alt="Amrita School of Engineering logo"
+          width="120"
+          loading="lazy"
+        />
+      </div>
+      <div class="edu-content">
+        <p>
+          <b>Bachelors</b> (B.Tech) | <b>Electronics and Communication Engineering</b> <br>
+          Amrita School of Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India | 2012 – 2016 <br>
+          Project: <a href="https://ieeexplore.ieee.org/document/8554923">Detection of Exudates in Diabetic Retinopathy Using SVM Classifier</a> | <a href="papers/ICACCI_2018_Detection_of_Exudates_in_Diabetic_Retinopathy.pdf">PDF</a>
+        </p>
+      </div>
+    </div>
+
   </div>
+
+  <div id="lightbox">
+    <span id="lightbox-close" title="Close">&times;</span>
+    <img id="lightbox-img" src="" alt="Logo enlarged" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.getElementById('lightbox-close');
+
+    document.querySelectorAll('.logo-trigger').forEach(wrapper => {
+      wrapper.addEventListener('click', () => {
+        const img = wrapper.querySelector('img');
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add('active');
+      });
+    });
+
+    closeBtn.addEventListener('click', () => lightbox.classList.remove('active'));
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') lightbox.classList.remove('active');
+    });
+  </script>
 </body>
 </html>
